@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:budget/pages/daily_page.dart';
 import 'package:budget/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -13,9 +14,6 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("yes"),
-      ),
       body: getBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -33,7 +31,7 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: currentIndex,
       children: [
-        Center(child: Text("Daily Page")),
+        DailyPage(),
         Center(child: Text("Stats Page")),
         Center(child: Text("Create Budget Page")),
         Center(child: Text("Budget Page")),
