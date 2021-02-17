@@ -1,5 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:budget/pages/daily_page.dart';
+import 'package:budget/pages/stats_page.dart';
 import 'package:budget/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -32,7 +33,7 @@ class _RootAppState extends State<RootApp> {
       index: currentIndex,
       children: [
         DailyPage(),
-        Center(child: Text("Stats Page")),
+        StatsApp(),
         Center(child: Text("Create Budget Page")),
         Center(child: Text("Budget Page")),
         Center(child: Text("Profile Page")),
