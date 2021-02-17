@@ -1,5 +1,6 @@
 import 'package:budget/json/stats_json.dart';
 import 'package:budget/themes/colors.dart';
+import 'package:budget/widgets/lineChart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -74,7 +75,7 @@ class _StatsAppState extends State<StatsApp> {
                                 height: 12,
                               ),
                               Container(
-                                height: 32,
+                                height: 30,
                                 width: 50,
                                 decoration: BoxDecoration(
                                     border: Border.all(
@@ -84,7 +85,7 @@ class _StatsAppState extends State<StatsApp> {
                                     color: index == monthIndex
                                         ? primary
                                         : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(9)),
+                                    borderRadius: BorderRadius.circular(6)),
                                 child: Center(
                                   child: Text(
                                     stats[index]["month"],
@@ -93,7 +94,7 @@ class _StatsAppState extends State<StatsApp> {
                                             ? Colors.grey[100]
                                             : Colors.black.withOpacity(0.5),
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 13),
+                                        fontSize: 11),
                                   ),
                                 ),
                               )
@@ -104,6 +105,42 @@ class _StatsAppState extends State<StatsApp> {
                     }),
                   )
                 ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              width: double.infinity,
+              height: 260,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Net Balance",
+                      style: TextStyle(
+                          fontSize: 14, color: Colors.black.withOpacity(0.5)),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "\$2560.90",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 22),
+                    ),
+                    LineChartOurs()
+                  ],
+                ),
               ),
             ),
           )
