@@ -21,6 +21,10 @@ class _StatsAppState extends State<StatsApp> {
 
   Widget getStatsBody() {
     var size = MediaQuery.of(context).size;
+    List expenses = [
+      {"icon": Icons.arrow_back, "middle": "Income", "money": "\$7893.50"},
+      {"icon": Icons.arrow_forward, "middle": "Expense", "money": "\$4783.45"}
+    ];
 
     return SingleChildScrollView(
       child: Column(
@@ -109,10 +113,10 @@ class _StatsAppState extends State<StatsApp> {
             ),
           ),
           SizedBox(
-            height: 4,
+            height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Container(
               width: double.infinity,
               height: 260,
@@ -126,7 +130,7 @@ class _StatsAppState extends State<StatsApp> {
                     Text(
                       "Net Balance",
                       style: TextStyle(
-                          fontSize: 14, color: Colors.black.withOpacity(0.5)),
+                          fontSize: 14, color: Colors.black.withOpacity(0.4)),
                     ),
                     SizedBox(
                       height: 10,
@@ -136,14 +140,73 @@ class _StatsAppState extends State<StatsApp> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
-                          fontSize: 22),
+                          fontSize: 24),
                     ),
                     LineChartOurs()
                   ],
                 ),
               ),
             ),
-          )
+          ),
+          //fds,
+          SizedBox(
+            height: 10,
+          ),
+          Wrap(
+              spacing: 20,
+              children: List.generate(expenses.length, (index) {
+                return Container(
+                  height: 170,
+                  width: (size.width - 60) / 2,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 22, 10, 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: expenses[index]["middle"] == "Income"
+                                  ? blue
+                                  : primary),
+                          child: Icon(
+                            expenses[index]["icon"],
+                            color: Colors.white,
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                expenses[index]["middle"],
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black.withOpacity(0.5)),
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Text(expenses[index]["money"],
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }))
         ],
       ),
     );
