@@ -12,6 +12,7 @@ class _CreateBudgetState extends State<CreateBudget> {
   int currentContainer;
   TextEditingController budget_name = TextEditingController(text: "Shopping");
   TextEditingController budget_price = TextEditingController(text: "\$720.0");
+  bool buttonPink = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,65 +131,89 @@ class _CreateBudgetState extends State<CreateBudget> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 40,
           ),
           //section budget
-          Column(
-            children: [
-              Text(
-                "budget name",
-                style: TextStyle(
-                    fontSize: 18,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 12, 5, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Budget name",
+                  style: TextStyle(
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black.withOpacity(0.5)),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              TextField(
-                controller: budget_name,
-                style: styler(23.0, 1.0),
-                cursorColor: black,
-                decoration: InputDecoration(
-                    hintText: "Enter your budget",
-                    focusColor: Colors.green,
-                    border: InputBorder.none),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Text(
-                "Total budget",
-                style: styler(18.0, 0.5),
-              ),
-              Row(
-                children: [
-                  TextField(
+                    color: Colors.black.withOpacity(0.4),
+                  ),
+                ),
+                SizedBox(
+                  height: 1,
+                ),
+                Container(
+                  width: size.width,
+                  child: TextField(
+                    controller: budget_name,
+                    style: styler(21.4, 1.0),
                     cursorColor: black,
-                    controller: budget_price,
-                    style: styler(23.0, 1.0),
                     decoration: InputDecoration(
-                        focusColor: Colors.green,
                         hintText: "Enter your budget",
+                        focusColor: Colors.green,
                         border: InputBorder.none),
                   ),
-                  SizedBox(
-                    width: 22,
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9), color: primary),
-                    child: Center(
-                        child: Icon(
-                      AntDesign.arrowright,
-                      color: Colors.white,
-                    )),
-                  )
-                ],
-              )
-            ],
+                ),
+                SizedBox(
+                  height: 26,
+                ),
+                Text(
+                  "Total budget",
+                  style: styler(14.0, 0.4),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: size.width * 0.72,
+                      child: TextField(
+                        cursorColor: black,
+                        controller: budget_price,
+                        style: styler(21.4, 1.0),
+                        decoration: InputDecoration(
+                            focusColor: Colors.green,
+                            hintText: "Enter your budget",
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 22,
+                    ),
+                    Listener(
+                      onPointerDown: (PointerEvent details) {
+                        setState(() {
+                          buttonPink = true;
+                        });
+                      },
+                      onPointerUp: (PointerEvent eventer) {
+                        setState(() {
+                          buttonPink = false;
+                        });
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            color: buttonPink ? Colors.pink[800] : primary),
+                        child: Center(
+                            child: Icon(
+                          AntDesign.arrowright,
+                          color: Colors.white,
+                        )),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
@@ -199,6 +224,7 @@ class _CreateBudgetState extends State<CreateBudget> {
     return TextStyle(
         fontSize: fontSizer,
         fontWeight: FontWeight.bold,
-        color: Colors.black.withOpacity(opac));
+        color: Colors.black.withOpacity(opac),
+        letterSpacing: opac == 1 ? 0.8 : null);
   }
 }

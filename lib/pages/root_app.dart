@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:budget/pages/budget_page.dart';
 import 'package:budget/pages/create_budget.dart';
 import 'package:budget/pages/daily_page.dart';
 import 'package:budget/pages/stats_page.dart';
@@ -35,9 +36,9 @@ class _RootAppState extends State<RootApp> {
       children: [
         DailyPage(),
         StatsApp(),
-        CreateBudget(),
-        Center(child: Text("Budget Page")),
+        BudgetPage(),
         Center(child: Text("Profile Page")),
+        CreateBudget(),
       ],
     );
   }
