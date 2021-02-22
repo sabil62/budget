@@ -8,6 +8,11 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  TextEditingController email =
+      TextEditingController(text: "roman_lion@gmail.com");
+  TextEditingController date = TextEditingController(text: "08-14-1999");
+  TextEditingController password =
+      TextEditingController(text: "passwordiswhatbro");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +56,7 @@ class _ProfileState extends State<Profile> {
                           child: Container(
                             height: 130,
                             decoration: BoxDecoration(
-                                border: Border.all(color: primary, width: 5),
+                                border: Border.all(color: primary, width: 5.5),
                                 shape: BoxShape.circle,
                                 color: Colors.transparent),
                             child: Padding(
@@ -93,6 +98,135 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 18,
+                  ),
+                  Container(
+                    height: 120,
+                    decoration: BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Neon Bank Country",
+                                  style: TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.grey[200], //jpt jugad
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                SizedBox(
+                                  height: 7.2,
+                                ),
+                                Text(
+                                  "\$7348.90",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.grey[100], //jpt jugad
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 0.4),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 49.6,
+                            decoration: BoxDecoration(
+                                color: primary,
+                                border: Border.all(
+                                    width: 1, color: Colors.grey[100]),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 18),
+                              child: Center(
+                                  child: Text("Update",
+                                      style: texter(17.0, 0.9,
+                                          weight: FontWeight.w500))),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Email",
+                    style: texter(14.0, 0.4),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  TextField(
+                    controller: email,
+                    style: texter(17.4, 1.0, weight: FontWeight.w700),
+                    cursorColor: black,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Enter your email",
+                        focusColor: Colors.green),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    "Date of Birth",
+                    style: texter(14.0, 0.4),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  TextField(
+                    controller: date,
+                    style: texter(17.4, 1.0, weight: FontWeight.w700),
+                    cursorColor: black,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Enter your email",
+                        focusColor: Colors.green),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    "Password",
+                    style: texter(14.0, 0.4),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  TextField(
+                    controller: password,
+                    style: texter(17.4, 1.0, weight: FontWeight.w700),
+                    cursorColor: black,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Enter your email",
+                        focusColor: Colors.green),
+                  ),
+                  SizedBox(
+                    height: 8,
                   )
                 ],
               ),
@@ -103,10 +237,12 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  TextStyle texter(fontsize, opaci, {FontWeight weight = FontWeight.w500}) {
+  TextStyle texter(fontsize, opaci, {FontWeight weight = FontWeight.w600}) {
     return TextStyle(
         fontSize: fontsize,
-        color: Colors.black.withOpacity(opaci),
+        color: opaci == 0.9
+            ? Colors.white
+            : Colors.black.withOpacity(opaci), //jpt jugad
         fontWeight: weight);
   }
 }
