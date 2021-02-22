@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:budget/pages/budget_page.dart';
 import 'package:budget/pages/create_budget.dart';
 import 'package:budget/pages/daily_page.dart';
+import 'package:budget/pages/profile.dart';
 import 'package:budget/pages/stats_page.dart';
 import 'package:budget/themes/colors.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _RootAppState extends State<RootApp> {
         DailyPage(),
         StatsApp(),
         BudgetPage(),
-        Center(child: Text("Profile Page")),
+        Profile(),
         CreateBudget(),
       ],
     );
