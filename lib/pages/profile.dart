@@ -1,6 +1,7 @@
 import 'package:budget/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -51,28 +52,57 @@ class _ProfileState extends State<Profile> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        width: (size.width - 44) * 0.4,
-                        child: Center(
-                          child: Container(
-                            height: 130,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: primary, width: 5.5),
-                                shape: BoxShape.circle,
-                                color: Colors.transparent),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/profile/profile.jpg"),
-                                        fit: BoxFit.cover),
-                                    shape: BoxShape.circle),
+                          width: (size.width - 44) * 0.4,
+                          child: Stack(
+                            children: [
+                              RotatedBox(
+                                quarterTurns: -2,
+                                child: CircularPercentIndicator(
+                                  radius: 120.0,
+                                  lineWidth: 6.0,
+                                  percent: 0.53,
+                                  center: new Text("100%"),
+                                  progressColor: primary,
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
+                              Positioned(
+                                top: 16,
+                                left: 13,
+                                child: Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/profile/profile.jpg"),
+                                          fit: BoxFit.cover)),
+                                ),
+                              )
+                            ],
+                          )),
+                      // Center(
+                      //   child: Container(
+                      //     height: 130,
+                      //     decoration: BoxDecoration(
+                      //         border: Border.all(color: primary, width: 5.5),
+                      //         shape: BoxShape.circle,
+                      //         color: Colors.transparent),
+                      //     child: Padding(
+                      //       padding: const EdgeInsets.all(6.0),
+                      //       child: Container(
+                      //         decoration: BoxDecoration(
+                      //             image: DecorationImage(
+                      //                 image: AssetImage(
+                      //                     "assets/profile/profile.jpg"),
+                      //                 fit: BoxFit.cover),
+                      //             shape: BoxShape.circle),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(19.8, 0, 0, 5),
                         child: Container(
